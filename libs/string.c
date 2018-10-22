@@ -37,15 +37,14 @@ inline void bzero(void *s, size_t n)
 
 inline int strcmp(const char *str1, const char *str2)
 {
-    while(*str1 && *str2)
+    for(; *str1 == *str2; )
     {
-	if(*str1 > *str2)
-	    return 1;
-	else  if(*str1 < *str2)
-	    return -1;
-	str1++, str2++;
+	if(*str1 == '\0')
+	    return 0;
+	str1++;
+	str2++;
     }
-    return 0;
+    return (*str1 - *str2 ? 1 : -1);
 }
 
 inline int strncmp(const char *str1, const char *str2, size_t n)
@@ -107,6 +106,7 @@ inline size_t strlen(const char *str)
 
     return n;
 }
+
 
 inline int isdigit(const char c)
 {

@@ -1,0 +1,58 @@
+/*************************************************************************
+    > File Name: kernel/debug/debug.c
+    > Author: Function_Dou
+    > Mail: NOT
+    > Created Time: 2018年10月18日 星期四 21时49分30秒
+ ************************************************************************/
+
+#include "debug.h"
+
+static void print_statck_trace();
+static elf_t kernel_elf;   /* ELF信息 */ 
+
+void init_debug()
+{
+    kernel_elf = elf_from_multiboot(glb_mboot_ptr); /* glb_mboot_ptr : 声明在multiboot.h中, 是一个extern */ 
+}
+
+void print_cur_status()
+{
+    static int round = 0;
+    uint16_t reg1, reg2, reg3, reg4;
+
+    asm volatile( "mov %%cs, %0;"
+	    "mov %%ds, %1;"
+	    "mov %%es, %2;"
+	    "mov %%ss, %3;"
+	    : "=m"(reg1), "=m"(reg2), "=m"(reg3), "=m"(reg4));
+
+    printk("%d @ring %d\n", round, reg1 & 0x3);
+    printk("%d cs = %#x\n", round, reg2);
+    printk("%d es = %#x\n", round, reg3);
+    printk("%d ss = %#x\n", round, reg4);
+    ++round;
+}
+
+void panic(const char *msg)
+{
+    int i = 0;
+    printk("\tSystem panic : %s\n", msg);
+    print_statck_trace();
+    printk("\n");
+
+    while(1)
+	;
+}
+
+void print_statck_trace()
+{
+    uint32_t *ebp, *eip;
+
+    asm volatile ("mov %%ebp, %0" : "=r"(ebp));
+    while(ebp)
+    {
+	eip = ebp + 1;
+	printk(" [%#x] %s\n", *eip, elf_lookup_symbol(*eip, &kernel_elf));
+	ebp = (uint32_t*)*ebp;
+    }
+}

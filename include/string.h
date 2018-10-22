@@ -9,6 +9,7 @@
 #define INCLUDE_STRING_H_
 
 #include "types.h"
+#include "debug.h"
 
 void memcpy(void *dest, const void *src, size_t n);	/* 将src中的n个字节复制到dest字符串中 */ 
 

@@ -21,20 +21,41 @@ int number_sign(char *buf, const char ch);
 int spit_int(int num, char *fmt);
 int sipt_hex(int num, char *buf);
 
-int printk(char *fmt, ...)
+int printk(const char *fmt, ...)
 {
     char buf[SIZE];
-    va_list varg;
     int retnum;
+    va_list varg;
 
     va_start(varg, fmt);
     retnum = vprintk(buf, fmt, varg);
 
     va_end(varg);
-    buf[retnum] = '\0';
+    buf[retnum  + 1] = '\0';
     console_write(buf);
 
     return retnum;
+}
+
+int printk_color(real_color_t back, real_color_t fore, const char *fmt, ...)
+{
+    char buf[SIZE];
+    int renum;
+    va_list varg;
+
+    va_start(varg, fmt);
+    renum = vprintk(buf, fmt, varg);
+    va_end(varg);
+    buf[renum] = '\0';
+    char *p;
+    console_write_color(buf, back, fore);
+    /*
+    int tmp = renum;
+    tmp = spit_int(tmp, p);
+    p[tmp] = '\0';
+    console_write(p);
+*/ 
+    return renum;
 }
 
 // printf %c %d %s %- %+ %m
@@ -45,6 +66,7 @@ int vprintk(char *buf, char *fmt, va_list varg)
     int flags = 0;
     int num;	/* 保存int参数 */
     int m;	/* m 用来保存 %m 中m的值 */
+    int i;
 
 
     char *ptr_buf = NULL;   /* 保存 char * 参数 */ 
@@ -109,8 +131,12 @@ loop:
 		str = va_arg(varg, char *);
 		len = strlen(str);
 		num = (m ? (m > len ? len : m) : len);
+		/*
 		strncpy(ptr_buf, str, num);
 		ptr_buf += num;
+		*/
+		for(i = 0; i < num; i++)
+		    *ptr_buf++ = *str++;
 		m = 0;
 		break;
 	    case 'x':
@@ -123,7 +149,7 @@ loop:
 	flags = 0;
     }
 
-    ptr_buf = '\0';
+    *ptr_buf = '\0';
     return ptr_buf - buf;
 }
 

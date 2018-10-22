@@ -12,7 +12,31 @@
 #include "console.h"
 #include "string.h"
 #include "vargs.h"
-int printk(char *fmt, ...);
+#include "elf.h"
+
+#define assert(x, info) \
+	do { \
+		if(!(x))	\
+		panic(info)	\
+	}while(0)
+
+#define static_acssert(x)	\
+switch(x)\
+{\
+	case 0:\
+	case (x): \
+		   ;\
+}
+
+void init_debug();
+
+void print_cur_status();
+
+void panic(const char *msg);
+
+int printk(const char *fmt, ...);
+
+int printk_color(real_color_t back, real_color_t fore, const char *fmt, ...);
 
 int vprintk(char *buf, char *fmt, va_list varg);
 

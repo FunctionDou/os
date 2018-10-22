@@ -45,8 +45,8 @@ dd MBOOT_HEADER_FLAGS   ; GRUB 的一些加载时选项，其详细注释在定�
 dd MBOOT_CHECKSUM       ; 检测数值，其含义在定义处
 
 [GLOBAL start]      ; 向外部声明内核代码入口，此处提供该声明给链接器
-[GLOBAL glb_mboot_ptr]  ; 向外部声明 struct multiboot * 变量
-[EXTERN kern_entry]     ; 声明内核 C 代码的入口函数
+[GLOBAL glb_mboot_ptr]  ; 向外部声明 struct multiboot * 变量 在 <start> 开始的时候, 执行 mov DWORD PTR ds: 0x10a00c ebx语句时, 将ebx指向的地址存给multiboot_t结构体中, 保存全局变量
+[EXTERN kern_entry]     ; 声明内核 C 代码的入口函数, call <kern_entry>
 
 start:
     cli              ; 此时还没有设置好保护模式的中断处理，要关闭中断
