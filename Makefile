@@ -62,4 +62,4 @@ debug:
 	#  -s 启动时开启 1234 端口等待gdb调试
 	#  -S 启动时不自动开启, 等待调试器的命令
 	qemu -S -s -fda floppy.img -boot a &
-	cgdb -x tools/gdbinit
+	cgdb -x scripts/gdbinit

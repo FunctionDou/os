@@ -7,7 +7,7 @@
 
 #include "debug.h"
 
-static void print_statck_trace();
+static void print_stack_trace();
 static elf_t kernel_elf;   /* ELF信息 */ 
 
 void init_debug()
@@ -26,8 +26,10 @@ void print_cur_status()
 	    "mov %%ss, %3;"
 	    : "=m"(reg1), "=m"(reg2), "=m"(reg3), "=m"(reg4));
 
+    // 输出当前优先级别
     printk("%d @ring %d\n", round, reg1 & 0x3);
-    printk("%d cs = %#x\n", round, reg2);
+    printk("%d cs = %#x\n", round, reg1);
+    printk("%d ds = %#x\n", round, reg2);
     printk("%d es = %#x\n", round, reg3);
     printk("%d ss = %#x\n", round, reg4);
     ++round;
@@ -35,16 +37,15 @@ void print_cur_status()
 
 void panic(const char *msg)
 {
-    int i = 0;
     printk("\tSystem panic : %s\n", msg);
-    print_statck_trace();
+    print_stack_trace();
     printk("\n");
 
     while(1)
 	;
 }
 
-void print_statck_trace()
+void print_stack_trace()
 {
     uint32_t *ebp, *eip;
 

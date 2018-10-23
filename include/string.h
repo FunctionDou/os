@@ -13,7 +13,7 @@
 
 void memcpy(void *dest, const void *src, size_t n);	/* 将src中的n个字节复制到dest字符串中 */ 
 
-void memset(void *s, int ch, size_t n);	/* s : 起始地址, 从起始开始有n个字符要置成 ch */
+void memset(void *s, const uint8_t ch, size_t n);	/* s : 起始地址, 从起始开始有n个字符要置成 ch */
 
 void bzero(void *s, size_t n);  /* s : 置零的起始地址, n : n个字节 */
 

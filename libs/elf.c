@@ -37,13 +37,17 @@ elf_t elf_from_multiboot(multiboot_t *mb)
 
 const char * elf_lookup_symbol(uint32_t addr, elf_t *elf)
 {
-    int i;
-    for(i = 0; i< (elf->symtabsz / sizeof(elf_symbol_t)); i++)
+    int i = 0;
+    int num;
+    num = elf->symtabsz / sizeof(elf_symbol_t);
+    for( ; i < num; i++)
     {
 	if(ELF32_ST_TYPE(elf->symtab[i].info) != 0x2)
 	    continue;
 	if((addr >= elf->symtab[i].value) && (addr < (elf->symtab[i].value + elf->symtab[i].size)))
+	{
 	    return (const char *)((uint32_t)elf->strtab + elf->symtab[i].name);
+	}
     }
 
     return NULL;

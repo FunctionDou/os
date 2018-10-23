@@ -17,22 +17,17 @@ inline void memcpy(void *dest, const void *src, size_t n)
     }
 }
 
-inline void memset(void *s, int ch, size_t n)
+inline void memset(void *s, const uint8_t ch, size_t n)
 {
-    while((char *)s && n)
-    {
-	*(char *)s++ = ch + '0';
-	n--;
-    }
+    uint8_t *dst = (uint8_t *)s;
+
+    for( ; n != 0; n--)
+	*dst++ = ch;
 }
 
 inline void bzero(void *s, size_t n)
 {
-    while((char *)s && n)
-    {
-	*(char *)s++ = 0;
-	n--;
-    }
+    memset(s, 0, n);
 }
 
 inline int strcmp(const char *str1, const char *str2)

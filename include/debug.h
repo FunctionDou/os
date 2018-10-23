@@ -38,6 +38,6 @@ int printk(const char *fmt, ...);
 
 int printk_color(real_color_t back, real_color_t fore, const char *fmt, ...);
 
-int vprintk(char *buf, char *fmt, va_list varg);
+int vprintk(char *buf, const char *fmt, va_list varg);
 
 #endif

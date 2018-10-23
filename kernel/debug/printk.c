@@ -59,7 +59,7 @@ int printk_color(real_color_t back, real_color_t fore, const char *fmt, ...)
 }
 
 // printf %c %d %s %- %+ %m
-int vprintk(char *buf, char *fmt, va_list varg)
+int vprintk(char *buf, const char *fmt, va_list varg)
 {
     char ch;	/* 保存 char 类型的参数 */ 
     int len;	/* 保存函数的返回值 */
