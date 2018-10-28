@@ -32,10 +32,10 @@ static idt_ptr_t idt_ptr;
 
 
 
-
 // 初始化回调函数
 void register_interrupt_handler(uint8_t n, interrupt_handler_t h)
 {
+    // 将中断向量表中对应的中断号设置成指向我们写好的回调函数的函数地址
     interrupt_handlers[n] = h;
 }
 

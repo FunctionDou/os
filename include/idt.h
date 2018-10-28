@@ -7,46 +7,72 @@
 
 #ifndef INCLUDE_IDT_H_
 #define INCLUDE_IDT_H_
-
 #include "types.h"
 
-// 中断描述符
+// 中断描述符表
+//首先我们定义IDT结构体,成员有:中断处理程序的底16位偏移、选择子、属性等、中断处理程序的高16位偏移
 typedef struct idt_entry_t
 {
-    uint16_t base_lo;	/* 中断处理函数的低16位地址 */ 
-    uint16_t base_hi;	/* 中断处理函数的高16位地址 */ 
-    uint16_t sel;		/* 目标代码选择子 */ 
-    uint8_t always0;	/* 置0段 */ 
-    uint8_t flags;		/* 4位的type, 2位的DPL, 1位的P */ 
+	uint16_t base_lo;			//低16位偏移
+	uint16_t sel;				//目标代码段描述符选择子
+	uint8_t  always0;			//置0位
+	uint8_t  flags;				//有4位的type、1位的S、2位的DPL、1位的P
+	uint16_t base_hi;			//高16位偏移
 }__attribute__((packed)) idt_entry_t;
 
-// 指向中断向量表首地址的指针
+//声明idtr寄存器的内容
 typedef struct idt_ptr_t
 {
-    uint16_t limit;		/* 限制长度 */ 
-    uint32_t base;		/* 基址 */ 
+	uint16_t limit;				//低16位限长
+	uint32_t base;				//高32位基地址
 }__attribute__((packed)) idt_ptr_t;
 
+//cpu在处理中断的时候需要保护当前任务的信息，需要保存：
+//1.保存中断号,以及错误号(如果有的话) 
+//2.通用寄存器 
+//3.中断前数据段选择子(硬件会自动为我们保存代码段选择子(CS寄存器))
 
-// 寄存器类型
-typedef struct pt_regs_t {
-    uint32_t ds;	    // 用于保存用户的数据段描述符 , 数据段选择子
-    uint32_t edi;	    // 从 edi 到 eax 由 pusha 指令压入
-    uint32_t esi; 
-    uint32_t ebp;
-    uint32_t esp;
-    uint32_t ebx;
-    uint32_t edx;
-    uint32_t ecx;
-    uint32_t eax;
-    uint32_t int_no;	    // 中断号
-    uint32_t err_code;      // 错误代码(有中断错误代码的中断会由CPU压入)
-    uint32_t eip;	    // 以下由处理器自动压入
-    uint32_t cs;        
-    uint32_t eflags;
-    uint32_t useresp;
-    uint32_t ss;
-} pt_regs_t;
+
+//这个结构体的成员是处理中断时需要保存的现场信息
+typedef struct pt_regs_t
+{
+	uint32_t ds;		//数据段选择子
+	//通用寄存器由pusha指令一次压入
+	uint32_t edi;
+	uint32_t esi;
+	uint32_t ebp;
+	uint32_t esp;
+	uint32_t ebx;
+	uint32_t edx;
+	uint32_t ecx;
+	uint32_t eax;
+	uint32_t int_no;	//中断号
+	uint32_t err_code;	//错误号
+	//以下由硬件压入
+	uint32_t cs;
+	uint32_t eflags;
+	uint32_t user_esp;
+	uint32_t ss;
+	uint32_t eip;
+}pt_regs_t;
+
+//初始化idt
+void init_idt();
+
+//irq处理函数
+void irq_handler(pt_regs_t *regs);
+
+// 声明加载 IDTR 的函数
+extern void idt_flush(uint32_t);
+
+//定义中断处理函数指针
+typedef void (*interrupt_handler_t)(pt_regs_t *);
+
+//注册中断处理服务函数
+void register_interrupt_handler(uint8_t n, interrupt_handler_t h);
+
+//调用中断处理函数
+void isr_handler(pt_regs_t *regs);
 
 void isr0();        // 0 #DE 除 0 异常 
 void isr1();        // 1 #DB 调试异常 
@@ -67,9 +93,9 @@ void isr15();       // 15 CPU 保留
 void isr16();       // 16 #MF 浮点处理单元错误 
 void isr17();       // 17 #AC 对齐检查 
 void isr18();       // 18 #MC 机器检查 
-void isr19();       // 19 #XM SIMD(单指令多数据)浮点异常
+void isr19();		// 19 #XM SIMD浮点异常
 
-// 20 ~ 31 Intel 保留
+//20-31 Intel保留
 void isr20();
 void isr21();
 void isr22();
@@ -83,12 +109,10 @@ void isr29();
 void isr30();
 void isr31();
 
-// 32 ~ 255 用户自定义异常
+//32-255 用户自定义异常
 void isr255();
 
-
-
-// 定义IRQ
+//定义IRQ
 #define  IRQ0     32    // 电脑系统计时器
 #define  IRQ1     33    // 键盘
 #define  IRQ2     34    // 与 IRQ9 相接，MPU-401 MD 使用
@@ -106,8 +130,7 @@ void isr255();
 #define  IRQ14    46    // IDE0 传输控制使用
 #define  IRQ15    47    // IDE1 传输控制使用
 
-// 声明 IRQ 函数
-// IRQ:中断请求(Interrupt Request)
+//声明相应的IRQ函数
 void irq0();        // 电脑系统计时器
 void irq1();        // 键盘
 void irq2();        // 与 IRQ9 相接，MPU-401 MD 使用
@@ -126,23 +149,6 @@ void irq14();       // IDE0 传输控制使用
 void irq15();       // IDE1 传输控制使用
 
 
-// 中断表初始化
-void init_idt();
-
-// 声明加载IDRT的函数
-extern void idt_flush(uint32_t);
-
-// 定义中断处理函数指针
-typedef void (*interrupt_handler_t)(pt_regs_t *);
-
-// irq处理函数
-void irq_handler(pt_regs_t *regs);
-
-// 注册一个中断处理函数
-void register_interrupt_handler(uint8_t n, interrupt_handler_t h);
-
-// 调用中断处理函数
-void isr_handler(pt_regs_t *regs);
-
 
 #endif
+

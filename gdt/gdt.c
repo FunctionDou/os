@@ -13,7 +13,7 @@
 #define GDT_LEHGTH 5
 
 /* 全局描述符比表定义 */ 
-gdt_entry_t gdt_entries[GDT_LEHGTH];
+gdt_entry_struct gdt_entries[GDT_LEHGTH];
 
 // 定一个GDTR
 gdt_ptr_t gdt_ptr;
@@ -41,7 +41,7 @@ static void gdt_set_gate(int32_t num, uint32_t base, uint32_t limit, uint8_t acc
 void init_gdt()
 {
     //设置gdtr寄存器的值,因为是从0开始,所以需要减1, 数组的大小为GDT_LEGTH
-    gdt_ptr.limit = sizeof(gdt_entry_t) * GDT_LEHGTH - 1;
+    gdt_ptr.limit = sizeof(gdt_entry_struct) * GDT_LEHGTH - 1;
     gdt_ptr.base = (uint32_t)gdt_entries;
 
     gdt_set_gate(0, 0, 0, 0, 0);		    // 按照 Intel 文档要求，第一个描述符必须全0
@@ -50,6 +50,7 @@ void init_gdt()
     gdt_set_gate(3, 0, 0xFFFFFFFF, 0xFA, 0xCF);	    // 用户模式代码段
     gdt_set_gate(4, 0, 0xFFFFFFFF, 0xF2, 0xCF);	    // 用户模式数据段
 
-    // 加载全局描述符表地址到 GPTR 寄存器
+    // 加载全局描述符表地址到 GDTR 寄存器
+    // 完成加载GDT的过程, 就在需要调用gdt_flush()重新加载段寄存器
     gdt_flush((uint32_t) & gdt_ptr);
 }

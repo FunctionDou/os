@@ -1,8 +1,8 @@
 /*************************************************************************
-    > File Name: libs/string.c
-    > Author: Function_Dou
-    > Mail: NOT
-    > Created Time: 2018年10月16日 星期二 09时24分02秒
+  > File Name: libs/string.c
+  > Author: Function_Dou
+  > Mail: NOT
+  > Created Time: 2018年10月16日 星期二 09时24分02秒
  ************************************************************************/
 
 #include "string.h"

@@ -4,6 +4,7 @@ SECTIONS
     /* 段起始位置 */
 
     . = 0x100000;
+    PROVIDE(kern_start = .);
     .text :     /* 存放以编译的机械代码, 代码段 */
     {
         *(.text)    /* *通配符, 将链接的text段的数据写入 .text段中 */
@@ -34,6 +35,8 @@ SECTIONS
         *(.stabstr)
         . = ALIGN(4096);
     }
+
+    PROVIDE(kern_end = .);
 
     /DISCARD/ : { *(.comment) *(.eh_frame) }
 }

@@ -11,7 +11,7 @@
 #include  "types.h"
 
 // 全局描述符类型
-typedef struct gdt_entry_t
+typedef struct gdt_entry_struct
 {
 	uint16_t limit_low;		/* 0-15 : 段界限 */ 
 	uint16_t base_low;		/* 0-15 : 段基地址 */ 
@@ -19,13 +19,13 @@ typedef struct gdt_entry_t
 	uint8_t access;			/* 段存在位、描述符特权级、描述符类型、描述符子类别 */ 
 	uint8_t granularity;	/* 16-19 : 段界限 */ 
 	uint8_t base_high;		/* 24-31 : 段基地址 */
-}__attribute__((packed)) gdt_entry_t;
+}__attribute__((packed)) gdt_entry_struct;
 
 
 // GDTR
 typedef struct gdt_ptr_t
 {
-	uint16_t limit;		/* 16位段选择符 */ 
+	uint16_t limit;		/* 16位段选择符, limit 比表的大小小1, 所以如果limit为15, 则GDT表的大小就为16 */ 
 	uint32_t base;		/* 32位全局描述符基地址 */ 
 }__attribute__((packed)) gdt_ptr_t;
 

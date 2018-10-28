@@ -17,7 +17,7 @@
 #define assert(x, info) \
 	do { \
 		if(!(x))	\
-		panic(info)	\
+		panic(info);	\
 	}while(0)
 
 #define static_acssert(x)	\

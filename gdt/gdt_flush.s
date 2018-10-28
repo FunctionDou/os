@@ -2,7 +2,7 @@
 
 gdt_flush:
 	mov eax, [esp + 4]
-	lgdt [eax]
+	lgdt [eax]	; 使用lgdt加载GDTR寄存器
 
 	mov ax, 0x10
 	mov ds, ax
