@@ -1,0 +1,419 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ASM	Makefile	/^ASM = nasm$/;"	m
+ASM_FLAGS	Makefile	/^ASM_FLAGS = -f elf -g -F stabs # -fno-pie -fno-pic -O0 -WI -z relro -WI -z now$/;"	m
+BITINT	include/types.h	21;"	d
+BLACK	drivers/console.c	38;"	d	file:
+CC	Makefile	/^CC = gcc$/;"	m
+C_FLAGS	Makefile	/^C_FLAGS = -c -Wall -m32 -ggdb -gstabs+ -nostdinc -fno-builtin -fno-stack-protector -I include -fno-pie -fno-pic -O0 #-WI -z relro -WI -z now$/;"	m
+C_OBJECTS	Makefile	/^C_OBJECTS = $(patsubst %.c, %.o, $(C_SOURCES))$/;"	m
+C_SOURCES	Makefile	/^C_SOURCES = $(shell find . -name "*.c")$/;"	m
+ELF32_ST_TYPE	include/elf.h	25;"	d
+FALSE	include/types.h	17;"	d
+FLUSH_LEFT	kernel/debug/printk.c	11;"	d	file:
+FLUSH_RIGHT	kernel/debug/printk.c	12;"	d	file:
+GDT_LEHGTH	gdt/gdt.c	13;"	d	file:
+HEAP_START	mm/kalloc.c	14;"	d	file:
+HEX	kernel/debug/printk.c	16;"	d	file:
+HIGH	drivers/console.c	28;"	d	file:
+INCLUDE_COMMON_H_	include/io.h	9;"	d
+INCLUDE_CONSOLE_H_	include/console.h	9;"	d
+INCLUDE_DEBUG_H_	include/debug.h	9;"	d
+INCLUDE_ELF_H_	include/elf.h	18;"	d
+INCLUDE_GDT_H_	include/gdt.h	9;"	d
+INCLUDE_IDT_H_	include/idt.h	9;"	d
+INCLUDE_KALLOC_H_	include/kalloc.h	9;"	d
+INCLUDE_MULTIBOOT_H_	include/multiboot.h	9;"	d
+INCLUDE_PMM_H_	include/pmm.h	9;"	d
+INCLUDE_SCHED_H_	include/sched.h	9;"	d
+INCLUDE_STRING_H_	include/string.h	9;"	d
+INCLUDE_TIMER_H_	include/timer.h	9;"	d
+INCLUDE_TYPES_H_	include/types.h	9;"	d
+INCLUDE_VARGS_H_	include/vargs.h	9;"	d
+INCLUDE_VMM_H_	include/vmm.h	9;"	d
+INTERRUPTMAX	idt/idt.c	13;"	d	file:
+IRQ	idt/idt_s.s	/^IRQ   0,    32  ; 电脑系统计时器$/;"	l
+IRQ	idt/idt_s.s	/^IRQ   1,    33  ; 键盘$/;"	l
+IRQ	idt/idt_s.s	/^IRQ   2,    34  ; 与 IRQ9 相接，MPU-401 MD 使用$/;"	l
+IRQ	idt/idt_s.s	/^IRQ   3,    35  ; 串口设备$/;"	l
+IRQ	idt/idt_s.s	/^IRQ   4,    36  ; 串口设备$/;"	l
+IRQ	idt/idt_s.s	/^IRQ   5,    37  ; 建议声卡使用$/;"	l
+IRQ	idt/idt_s.s	/^IRQ   6,    38  ; 软驱传输控制使用$/;"	l
+IRQ	idt/idt_s.s	/^IRQ   7,    39  ; 打印机传输控制使用$/;"	l
+IRQ	idt/idt_s.s	/^IRQ   8,    40  ; 即时时钟$/;"	l
+IRQ	idt/idt_s.s	/^IRQ   9,    41  ; 与 IRQ2 相接，可设定给其他硬件$/;"	l
+IRQ	idt/idt_s.s	/^IRQ  10,    42  ; 建议网卡使用$/;"	l
+IRQ	idt/idt_s.s	/^IRQ  11,    43  ; 建议 AGP 显卡使用$/;"	l
+IRQ	idt/idt_s.s	/^IRQ  12,    44  ; 接 PS\/2 鼠标，也可设定给其他硬件$/;"	l
+IRQ	idt/idt_s.s	/^IRQ  13,    45  ; 协处理器使用$/;"	l
+IRQ	idt/idt_s.s	/^IRQ  14,    46  ; IDE0 传输控制使用$/;"	l
+IRQ	idt/idt_s.s	/^IRQ  15,    47  ; IDE1 传输控制使用$/;"	l
+IRQ0	include/idt.h	117;"	d
+IRQ1	include/idt.h	118;"	d
+IRQ10	include/idt.h	127;"	d
+IRQ11	include/idt.h	128;"	d
+IRQ12	include/idt.h	129;"	d
+IRQ13	include/idt.h	130;"	d
+IRQ14	include/idt.h	131;"	d
+IRQ15	include/idt.h	132;"	d
+IRQ2	include/idt.h	119;"	d
+IRQ3	include/idt.h	120;"	d
+IRQ4	include/idt.h	121;"	d
+IRQ5	include/idt.h	122;"	d
+IRQ6	include/idt.h	123;"	d
+IRQ7	include/idt.h	124;"	d
+IRQ8	include/idt.h	125;"	d
+IRQ9	include/idt.h	126;"	d
+ISR_ERRCODE	idt/idt_s.s	/^ISR_ERRCODE    8    ; 8 #DF 双重故障(有错误代码) $/;"	l
+ISR_ERRCODE	idt/idt_s.s	/^ISR_ERRCODE   10    ; 10 #TS 无效TSS(有错误代码) $/;"	l
+ISR_ERRCODE	idt/idt_s.s	/^ISR_ERRCODE   11    ; 11 #NP 段不存在(有错误代码) $/;"	l
+ISR_ERRCODE	idt/idt_s.s	/^ISR_ERRCODE   12    ; 12 #SS 栈错误(有错误代码) $/;"	l
+ISR_ERRCODE	idt/idt_s.s	/^ISR_ERRCODE   13    ; 13 #GP 常规保护(有错误代码) $/;"	l
+ISR_ERRCODE	idt/idt_s.s	/^ISR_ERRCODE   14    ; 14 #PF 页故障(有错误代码) $/;"	l
+ISR_ERRCODE	idt/idt_s.s	/^ISR_ERRCODE   17    ; 17 #AC 对齐检查 $/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE  0    ; 0 #DE 除 0 异常$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE  1    ; 1 #DB 调试异常$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE  2    ; 2 NMI$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE  3    ; 3 BP 断点异常 $/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE  4    ; 4 #OF 溢出 $/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE  5    ; 5 #BR 对数组的引用超出边界 $/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE  6    ; 6 #UD 无效或未定义的操作码 $/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE  7    ; 7 #NM 设备不可用(无数学协处理器) $/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE  9    ; 9 协处理器跨段操作$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 15    ; 15 CPU 保留 $/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 16    ; 16 #MF 浮点处理单元错误 $/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 18    ; 18 #MC 机器检查 $/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 19    ; 19 #XM SIMD(单指令多数据)浮点异常$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 20$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 21$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 22$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 23$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 24$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 25$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 255$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 26$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 27$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 28$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 29$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 30$/;"	l
+ISR_NOERRCODE	idt/idt_s.s	/^ISR_NOERRCODE 31$/;"	l
+LD	Makefile	/^LD = ld$/;"	m
+LD_FLAGS	Makefile	/^LD_FLAGS = -T scripts\/kernel.ld -m elf_i386 -nostdlib$/;"	m
+MBOOT_CHECKSUM	boot/boot.s	/^MBOOT_CHECKSUM      equ     -(MBOOT_HEADER_MAGIC+MBOOT_HEADER_FLAGS)$/;"	d
+MBOOT_HEADER_FLAGS	boot/boot.s	/^MBOOT_HEADER_FLAGS  equ     MBOOT_PAGE_ALIGN | MBOOT_MEM_INFO$/;"	d
+MBOOT_HEADER_MAGIC	boot/boot.s	/^MBOOT_HEADER_MAGIC  equ     0x1BADB002$/;"	d
+MBOOT_MEM_INFO	boot/boot.s	/^MBOOT_MEM_INFO      equ     1 << 1    $/;"	d
+MBOOT_PAGE_ALIGN	boot/boot.s	/^MBOOT_PAGE_ALIGN    equ     1 << 0$/;"	d
+NULL	include/types.h	12;"	d
+NUMBER_SIGN	kernel/debug/printk.c	13;"	d	file:
+OFFET_INDEX	include/vmm.h	49;"	d
+PAGE_MASK	include/vmm.h	45;"	d
+PAGE_MAX_SIZE	include/pmm.h	17;"	d
+PAGE_OFFSET	include/vmm.h	16;"	d
+PAGE_PRESENT	include/vmm.h	22;"	d
+PAGE_SIZE	include/pmm.h	16;"	d
+PAGE_SIZE	include/vmm.h	42;"	d
+PAGE_USER	include/vmm.h	39;"	d
+PAGE_WRITE	include/vmm.h	31;"	d
+PER_SYM	kernel/debug/printk.c	10;"	d	file:
+PGD_INDEX	include/vmm.h	47;"	d
+PGD_SIZE	include/vmm.h	53;"	d
+PMM_MAX_SIZE	include/pmm.h	15;"	d
+POINT	kernel/debug/printk.c	14;"	d	file:
+PTE_COUNT	include/vmm.h	56;"	d
+PTE_INDEX	include/vmm.h	48;"	d
+PTE_SIZE	include/vmm.h	54;"	d
+SIZE	include/types.h	20;"	d
+STACK_SIZE	include/pmm.h	14;"	d
+STACK_TOP	boot/boot.s	/^STACK_TOP equ $-stack-1     ; 内核栈顶, $ 符指代是当前地址$/;"	d
+S_OBJECTS	Makefile	/^S_OBJECTS = $(patsubst %.s, %.o, $(S_SOURCES))$/;"	m
+S_SOURCES	Makefile	/^S_SOURCES = $(shell find . -name "*.s")$/;"	m
+TAB	drivers/console.c	39;"	d	file:
+TASK_IDLE	include/sched.h	/^	TASK_IDLE = 2,			\/\/ 空闲$/;"	e	enum:task_state
+TASK_RUNNING	include/sched.h	/^	TASK_RUNNING = 0,		\/\/ 运行态$/;"	e	enum:task_state
+TASK_SLEEP	include/sched.h	/^	TASK_SLEEP = 4,			\/\/ 睡眠$/;"	e	enum:task_state
+TASK_UNRUN	include/sched.h	/^	TASK_UNRUN = 5,$/;"	e	enum:task_state
+TASK_WAIT	include/sched.h	/^	TASK_WAIT = 1,			\/\/ 等待$/;"	e	enum:task_state
+TASK_ZOMBLE	include/sched.h	/^	TASK_ZOMBLE = 3,		\/\/ 僵尸$/;"	e	enum:task_state
+TRUE	include/types.h	16;"	d
+VGA_CURSOR_HIGH	drivers/console.c	31;"	d	file:
+VGA_CURSOR_LOW	drivers/console.c	32;"	d	file:
+VGA_PORT_0x3D4	drivers/console.c	35;"	d	file:
+VGA_PORT_0x3D5	drivers/console.c	36;"	d	file:
+WIDTH	drivers/console.c	27;"	d	file:
+_INSIZEOF	include/vargs.h	22;"	d
+access	include/gdt.h	/^	uint8_t access;			\/* 40-47 : 段存在位、描述符特权级、描述符类型、描述符子类别 *\/ $/;"	m	struct:gdt_entry_struct
+addr	include/elf.h	/^	uint32_t addr;$/;"	m	struct:elf_section_header_t
+addr	include/multiboot.h	/^	uint32_t addr;			\/* ELF结构首地址 *\/ $/;"	m	struct:multiboot_t
+addralign	include/elf.h	/^	uint32_t addralign;$/;"	m	struct:elf_section_header_t
+alloc_chunk	mm/kalloc.c	/^void alloc_chunk(uint32_t start, uint32_t len)$/;"	f
+alloc_page	mm/pmm.c	/^uint32_t alloc_page()$/;"	f
+allocated	include/kalloc.h	/^	uint32_t allocated : 1;		\/\/ 该内存块是否已经被申请$/;"	m	struct:header
+always0	include/idt.h	/^	uint8_t  always0;			\/\/置0位$/;"	m	struct:idt_entry_t
+apm_table	include/multiboot.h	/^	uint32_t apm_table;$/;"	m	struct:multiboot_t
+assert	include/debug.h	17;"	d
+atoi	libs/string.c	/^inline int atoi(const char *str)$/;"	f
+base	include/gdt.h	/^	uint32_t base;		\/* 32位全局描述符基地址 *\/ $/;"	m	struct:gdt_ptr_t
+base	include/idt.h	/^	uint32_t base;				\/\/ IDT基地址, 开始的地址$/;"	m	struct:idt_ptr_t
+base_addr_high	include/multiboot.h	/^	uint32_t base_addr_high;	\/* 启动地址的高32位 *\/ $/;"	m	struct:mmap_entry_t
+base_addr_low	include/multiboot.h	/^	uint32_t base_addr_low;		\/* 启动地址的低32位 *\/$/;"	m	struct:mmap_entry_t
+base_hi	include/idt.h	/^	uint16_t base_hi;			\/\/ISR的高16位地址$/;"	m	struct:idt_entry_t
+base_high	include/gdt.h	/^	uint8_t base_high;		\/* 56-63 : 段基地址 *\/$/;"	m	struct:gdt_entry_struct
+base_lo	include/idt.h	/^	uint16_t base_lo;			\/\/ISR的低16位地址$/;"	m	struct:idt_entry_t
+base_low	include/gdt.h	/^	uint16_t base_low;		\/* 16-31 : 段基地址 *\/ $/;"	m	struct:gdt_entry_struct
+base_middle	include/gdt.h	/^	uint8_t base_middle;	\/* 32-39 : 段基地址 *\/ $/;"	m	struct:gdt_entry_struct
+blank	drivers/console.c	/^uint16_t blank = 0x20 | ((0 << 4 | (15 & 0x0F)) << 8);$/;"	v
+boot_device	include/multiboot.h	/^	uint32_t boot_device;	\/* flags[1]保存BIOS启动时从哪个OS镜像引导 *\/ $/;"	m	struct:multiboot_t
+boot_loader_name	include/multiboot.h	/^	uint32_t boot_loader_name;$/;"	m	struct:multiboot_t
+bzero	libs/string.c	/^inline void bzero(void *s, size_t n)$/;"	f
+change_task_to	kernel/sched/sched.c	/^void change_task_to(struct task_struct *next)$/;"	f
+cmdline	include/multiboot.h	/^	uint32_t cmdline;		\/* 内核命令行 *\/ $/;"	m	struct:multiboot_t
+config_table	include/multiboot.h	/^	uint32_t config_table;	\/* ROM配置表 *\/$/;"	m	struct:multiboot_t
+console_clear	drivers/console.c	/^void console_clear()$/;"	f
+console_putc_color	drivers/console.c	/^void console_putc_color(const char c, real_color_t back, real_color_t fore)$/;"	f
+console_write	drivers/console.c	/^void console_write(const char *cstr)$/;"	f
+console_write_color	drivers/console.c	/^void console_write_color(const char *cstr, real_color_t back, real_color_t fore)$/;"	f
+context	include/sched.h	/^	struct context context;			\/\/ 上下文切换保存寄存器值的$/;"	m	struct:task_struct	typeref:struct:task_struct::context
+context	include/sched.h	/^struct context $/;"	s
+cs	include/idt.h	/^	uint32_t cs;$/;"	m	struct:pt_regs_t
+current	kernel/sched/sched.c	/^struct task_struct * current = NULL;$/;"	v	typeref:struct:task_struct
+cursor_x	drivers/console.c	/^static uint8_t cursor_x = 0;$/;"	v	file:
+cursor_y	drivers/console.c	/^static uint8_t cursor_y = 0;$/;"	v	file:
+dd	boot/boot.s	/^dd MBOOT_CHECKSUM       ; 检测数值，其含义在定义处$/;"	l
+dd	boot/boot.s	/^dd MBOOT_HEADER_FLAGS   ; GRUB 的一些加载时选项，其详细注释在定义处$/;"	l
+dd	boot/boot.s	/^dd MBOOT_HEADER_MAGIC   ; GRUB 会通过这个魔数判断该映像是否支持$/;"	l
+drives_addr	include/multiboot.h	/^	uint32_t drives_addr;	\/* 第一个驱动器的地址 *\/ $/;"	m	struct:multiboot_t
+drives_length	include/multiboot.h	/^	uint32_t drives_length;	\/* 第一个驱动器的长度 *\/ $/;"	m	struct:multiboot_t
+ds	include/idt.h	/^	uint32_t ds;		\/\/数据段选择子$/;"	m	struct:pt_regs_t
+eax	include/idt.h	/^	uint32_t eax;$/;"	m	struct:pt_regs_t
+ebp	include/idt.h	/^	uint32_t ebp;$/;"	m	struct:pt_regs_t
+ebp	include/sched.h	/^	uint32_t ebp;$/;"	m	struct:context
+ebx	include/idt.h	/^	uint32_t ebx;$/;"	m	struct:pt_regs_t
+ebx	include/sched.h	/^	uint32_t ebx;$/;"	m	struct:context
+ecx	include/idt.h	/^	uint32_t ecx;$/;"	m	struct:pt_regs_t
+edi	include/idt.h	/^	uint32_t edi;$/;"	m	struct:pt_regs_t
+edi	include/sched.h	/^	uint32_t edi;$/;"	m	struct:context
+edx	include/idt.h	/^	uint32_t edx;$/;"	m	struct:pt_regs_t
+eflags	include/idt.h	/^	uint32_t eflags;$/;"	m	struct:pt_regs_t
+eflags	include/sched.h	/^	uint32_t eflags;$/;"	m	struct:context
+eip	include/idt.h	/^	uint32_t eip;$/;"	m	struct:pt_regs_t
+elf_from_multiboot	libs/elf.c	/^elf_t elf_from_multiboot(multiboot_t *mb)$/;"	f
+elf_lookup_symbol	libs/elf.c	/^const char * elf_lookup_symbol(uint32_t addr, elf_t *elf)$/;"	f
+elf_section_header_t	include/elf.h	/^typedef struct elf_section_header_t$/;"	s
+elf_section_header_t	include/elf.h	/^}__attribute__((packed)) elf_section_header_t;$/;"	t	typeref:struct:elf_section_header_t
+elf_symbol_t	include/elf.h	/^typedef struct elf_symbol_t$/;"	s
+elf_symbol_t	include/elf.h	/^}__attribute__((packed)) elf_symbol_t;$/;"	t	typeref:struct:elf_symbol_t
+elf_t	include/elf.h	/^typedef struct elf_t$/;"	s
+elf_t	include/elf.h	/^}elf_t;$/;"	t	typeref:struct:elf_t
+entsize	include/elf.h	/^	uint32_t entsize;$/;"	m	struct:elf_section_header_t
+err_code	include/idt.h	/^	uint32_t err_code;	\/\/错误号$/;"	m	struct:pt_regs_t
+esi	include/idt.h	/^	uint32_t esi;$/;"	m	struct:pt_regs_t
+esi	include/sched.h	/^	uint32_t esi;$/;"	m	struct:context
+esp	include/idt.h	/^	uint32_t esp;$/;"	m	struct:pt_regs_t
+esp	include/sched.h	/^	uint32_t esp;$/;"	m	struct:context
+flag	init/entry.c	/^int flag = 0;$/;"	v
+flags	include/elf.h	/^	uint32_t flags;		\/* 处理器相关的特殊标志 *\/$/;"	m	struct:elf_section_header_t
+flags	include/idt.h	/^	uint8_t  flags;				\/\/有4位的type、1位的S、2位的DPL、1位的P$/;"	m	struct:idt_entry_t
+flags	include/multiboot.h	/^	uint32_t flags;$/;"	m	struct:multiboot_t
+free_chunk	mm/kalloc.c	/^void free_chunk(header_t *chunk)$/;"	f
+free_page	mm/pmm.c	/^void free_page(uint32_t page)$/;"	f
+gdt_entries	gdt/gdt.c	/^gdt_entry_struct gdt_entries[GDT_LEHGTH];$/;"	v
+gdt_entry_struct	include/gdt.h	/^typedef struct gdt_entry_struct$/;"	s
+gdt_entry_struct	include/gdt.h	/^}__attribute__((packed)) gdt_entry_struct;$/;"	t	typeref:struct:gdt_entry_struct
+gdt_flush	gdt/gdt_flush.s	/^gdt_flush:$/;"	l
+gdt_ptr	gdt/gdt.c	/^gdt_ptr_t gdt_ptr;$/;"	v
+gdt_ptr_t	include/gdt.h	/^typedef struct gdt_ptr_t$/;"	s
+gdt_ptr_t	include/gdt.h	/^}__attribute__((packed)) gdt_ptr_t;$/;"	t	typeref:struct:gdt_ptr_t
+gdt_set_gate	gdt/gdt.c	/^static void gdt_set_gate(int32_t num, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran)$/;"	f	file:
+get_mapping	mm/vmm.c	/^uint32_t get_mapping(pgd_t *pgd_now, uint32_t va, uint32_t *pa)$/;"	f
+glb_mboot_ptr	init/entry.c	/^multiboot_t *glb_mboot_ptr;      \/\/ 指向multiboot结构体指针, 在mutliboot.h中定义$/;"	v
+glue_chunk	mm/kalloc.c	/^void glue_chunk(header_t *chunk)$/;"	f
+granularity	include/gdt.h	/^	uint8_t granularity;	\/* 48-55 : 段界限 48-51 : limit_high, 52-55 : flags *\/ $/;"	m	struct:gdt_entry_struct
+header	include/kalloc.h	/^typedef struct header$/;"	s
+header_t	include/kalloc.h	/^}header_t;$/;"	t	typeref:struct:header
+heap_first	mm/kalloc.c	/^static header_t *heap_first;$/;"	v	file:
+heap_max	mm/kalloc.c	/^static uint32_t heap_max = HEAP_START;$/;"	v	file:
+hex	kernel/debug/printk.c	/^const char hex[] = "0123456789abcdef";$/;"	v
+idt_entries	idt/idt.c	/^static idt_entry_t idt_entries[INTERRUPTMAX];$/;"	v	file:
+idt_entry_t	include/idt.h	/^typedef struct idt_entry_t$/;"	s
+idt_entry_t	include/idt.h	/^}__attribute__((packed)) idt_entry_t;$/;"	t	typeref:struct:idt_entry_t
+idt_flush	idt/idt_s.s	/^idt_flush:$/;"	l
+idt_ptr	idt/idt.c	/^static idt_ptr_t idt_ptr;$/;"	v	file:
+idt_ptr_t	include/idt.h	/^typedef struct idt_ptr_t$/;"	s
+idt_ptr_t	include/idt.h	/^}__attribute__((packed)) idt_ptr_t;$/;"	t	typeref:struct:idt_ptr_t
+idt_set_gate	idt/idt.c	/^static void idt_set_gate(uint8_t num, uint32_t base, uint16_t sel, uint8_t flags)$/;"	f	file:
+inb	include/io.h	18;"	d
+info	include/elf.h	/^	uint32_t info;$/;"	m	struct:elf_section_header_t
+info	include/elf.h	/^	uint32_t info;$/;"	m	struct:elf_symbol_t
+init_IRQ	idt/idt.c	/^void init_IRQ()$/;"	f
+init_alloc	mm/kalloc.c	/^void init_alloc()$/;"	f
+init_debug	kernel/debug/debug.c	/^void init_debug()$/;"	f
+init_gdt	gdt/gdt.c	/^void init_gdt()$/;"	f
+init_idt	idt/idt.c	/^void init_idt()$/;"	f
+init_mmp	mm/pmm.c	/^void init_mmp()$/;"	f
+init_sched	kernel/sched/sched.c	/^void init_sched()$/;"	f
+init_timer	drivers/timer.c	/^void init_timer(uint32_t frequency)$/;"	f
+init_vmm	mm/vmm.c	/^void init_vmm()$/;"	f
+int16_t	include/types.h	/^typedef short int16_t;$/;"	t
+int32_t	include/types.h	/^typedef int int32_t;$/;"	t
+int8_t	include/types.h	/^typedef char int8_t;$/;"	t
+int_no	include/idt.h	/^	uint32_t int_no;	\/\/中断号$/;"	m	struct:pt_regs_t
+interrupt_handler_t	include/idt.h	/^typedef void (*interrupt_handler_t)(pt_regs_t *);$/;"	t
+interrupt_handlers	idt/idt.c	/^static interrupt_handler_t interrupt_handlers[INTERRUPTMAX];$/;"	v	file:
+inw	include/io.h	26;"	d
+irq_common_stub	idt/idt_s.s	/^irq_common_stub:$/;"	l
+irq_handler	idt/idt.c	/^void irq_handler(pt_regs_t *regs)$/;"	f
+isdigit	libs/string.c	/^inline int isdigit(const char c)$/;"	f
+isr_common_stub	idt/idt_s.s	/^isr_common_stub:$/;"	l
+isr_handler	idt/idt.c	/^void isr_handler(pt_regs_t *regs)$/;"	f
+kern_entry	init/entry.c	/^__attribute__((section(".init.text"))) void kern_entry()$/;"	f
+kern_init	init/entry.c	/^void kern_init()$/;"	f
+kern_stack	init/entry.c	/^char kern_stack[STACK_SIZE];$/;"	v
+kern_stack_top	init/entry.c	/^uint32_t kern_stack_top;$/;"	v
+kernel_elf	kernel/debug/debug.c	/^static elf_t kernel_elf;   \/* ELF信息 *\/ $/;"	v	file:
+kernel_thread	kernel/sched/kern_pthread.c	/^int32_t kernel_thread(int (*fn)(void *), void *arg)$/;"	f
+kfree	mm/kalloc.c	/^void kfree(void *p)$/;"	f
+kmalloc	mm/kalloc.c	/^void *kmalloc(uint32_t len)$/;"	f
+kthread_exit	kernel/sched/kern_pthread.c	/^void kthread_exit()$/;"	f
+length	include/kalloc.h	/^	uint32_t length : 31;		\/\/ 当前内存块的长度$/;"	m	struct:header
+length_high	include/multiboot.h	/^	uint32_t length_high;		\/* 内存区域的高32位 *\/ $/;"	m	struct:mmap_entry_t
+length_low	include/multiboot.h	/^	uint32_t length_low;		\/* 内存区域的低32位 *\/ $/;"	m	struct:mmap_entry_t
+limit	include/gdt.h	/^	uint16_t limit;		\/* 16位段选择符, limit 比表的大小小1, 所以如果limit为15, 则GDT表的大小就为16 *\/ $/;"	m	struct:gdt_ptr_t
+limit	include/idt.h	/^	uint16_t limit;				\/\/ IDT限长 (16位)$/;"	m	struct:idt_ptr_t
+limit_low	include/gdt.h	/^	uint16_t limit_low;		\/* 0-15  : 段界限 *\/ $/;"	m	struct:gdt_entry_struct
+link	include/elf.h	/^	uint32_t link;$/;"	m	struct:elf_section_header_t
+map	mm/vmm.c	/^void map(pgd_t *pgd_now, uint32_t va, uint32_t pa, uint32_t flags)$/;"	f
+mboot_ptr_tmp	boot/boot.s	/^mboot_ptr_tmp: dd 0         ; 全局multiboot结构指针$/;"	d
+mem_lower	include/multiboot.h	/^	uint32_t mem_lower;$/;"	m	struct:multiboot_t
+mem_upper	include/multiboot.h	/^	uint32_t mem_upper;$/;"	m	struct:multiboot_t
+memcpy	libs/string.c	/^inline void memcpy(void *dest, const void *src, size_t n)$/;"	f
+memset	libs/string.c	/^inline void memset(void *s, const uint8_t ch, size_t n)$/;"	f
+mm	include/sched.h	/^	struct mm_struct *mm;			\/\/ 页目录地址$/;"	m	struct:task_struct	typeref:struct:task_struct::mm_struct
+mm_struct	include/sched.h	/^struct mm_struct$/;"	s
+mmap_addr	include/multiboot.h	/^	uint32_t mmap_addr;		\/* 缓冲区的地址 *\/ $/;"	m	struct:multiboot_t
+mmap_entry_t	include/multiboot.h	/^typedef struct mmap_entry_t$/;"	s
+mmap_entry_t	include/multiboot.h	/^}__attribute__((packed)) mmap_entry_t;	\/* __attribute__ : gcc下使用的特性, 用来告知编译器的 *\/$/;"	t	typeref:struct:mmap_entry_t
+mmap_length	include/multiboot.h	/^	uint32_t mmap_length;	\/* 缓冲区的长度 *\/$/;"	m	struct:multiboot_t
+mods_addr	include/multiboot.h	/^	uint32_t mods_addr;$/;"	m	struct:multiboot_t
+mods_count	include/multiboot.h	/^	uint32_t mods_count;	\/* boot 模块列表 *\/$/;"	m	struct:multiboot_t
+multiboot_t	include/multiboot.h	/^typedef struct multiboot_t$/;"	s
+multiboot_t	include/multiboot.h	/^}__attribute__((packed)) multiboot_t;$/;"	t	typeref:struct:multiboot_t
+name	include/elf.h	/^	uint32_t name;		\/* 字符串表中的字节偏移 *\/ $/;"	m	struct:elf_section_header_t
+name	include/elf.h	/^	uint32_t name;	$/;"	m	struct:elf_symbol_t
+next	include/kalloc.h	/^	struct header *next;$/;"	m	struct:header	typeref:struct:header::header
+next	include/sched.h	/^	struct task__struct *next;		\/\/ 进程链表$/;"	m	struct:task_struct	typeref:struct:task_struct::task__struct
+now_pid	kernel/sched/sched.c	/^pid_t now_pid = 0;$/;"	v
+num	include/multiboot.h	/^	uint32_t num;			\/*  *\/ $/;"	m	struct:multiboot_t
+number_sign	kernel/debug/printk.c	/^int number_sign(char *buf, const char ch)$/;"	f
+offset	include/elf.h	/^	uint32_t offset;	\/* 文件开头到段开头的第一个字节的偏移 *\/$/;"	m	struct:elf_section_header_t
+other	include/elf.h	/^	uint32_t other;$/;"	m	struct:elf_symbol_t
+outb	include/io.h	14;"	d
+page_fault	mm/vmm.c	/^void page_fault(pt_regs_t *regs)$/;"	f
+panic	kernel/debug/debug.c	/^void panic(const char *msg)$/;"	f
+pgd_kern	mm/vmm.c	/^pgd_t pgd_kern[PGD_SIZE] __attribute__ ((aligned(PAGE_SIZE)));$/;"	v
+pgd_ptr	include/sched.h	/^	pgd_t *pgd_ptr;$/;"	m	struct:mm_struct
+pgd_t	include/vmm.h	/^typedef uint32_t pgd_t;							\/\/ 页目录数据类型$/;"	t
+pgd_tmp	init/entry.c	/^__attribute__((section(".init.data"))) pgd_t *pgd_tmp = (pgd_t *)0x1000;$/;"	v
+phy_page_count	mm/pmm.c	/^uint32_t phy_page_count = 0;$/;"	v
+pid	include/sched.h	/^	pid_t pid;						\/\/ PID$/;"	m	struct:task_struct
+pid_t	include/sched.h	15;"	d
+pmm_stack	mm/pmm.c	/^static uint32_t pmm_stack[PAGE_MAX_SIZE + 1];$/;"	v	file:
+pmm_stack_top	mm/pmm.c	/^static uint32_t pmm_stack_top = 0;$/;"	v	file:
+prev	include/kalloc.h	/^	struct header *prev;	\/\/ 前后内存块管理结构指针$/;"	m	struct:header	typeref:struct:header::header
+print_cur_status	kernel/debug/debug.c	/^void print_cur_status()$/;"	f
+print_stack_trace	kernel/debug/debug.c	/^void print_stack_trace()$/;"	f
+printk	kernel/debug/printk.c	/^int printk(const char *fmt, ...)$/;"	f
+printk_color	kernel/debug/printk.c	/^int printk_color(real_color_t back, real_color_t fore, const char *fmt, ...)$/;"	f
+pt_regs_t	include/idt.h	/^typedef struct pt_regs_t$/;"	s
+pt_regs_t	include/idt.h	/^}pt_regs_t;$/;"	t	typeref:struct:pt_regs_t
+pte_high	init/entry.c	/^__attribute__((section(".init.data"))) pgd_t *pte_high = (pgd_t *)0x3000;$/;"	v
+pte_kern	mm/vmm.c	/^static pte_t pte_kern[PTE_COUNT][PTE_SIZE] __attribute__ ((aligned(PAGE_SIZE)));$/;"	v	file:
+pte_low	init/entry.c	/^__attribute__((section(".init.data"))) pgd_t *pte_low = (pgd_t *)0x2000;$/;"	v
+pte_t	include/vmm.h	/^typedef uint32_t pte_t;							\/\/ 页表数据类型$/;"	t
+rc_black	include/console.h	/^    rc_black = 0,$/;"	e	enum:real_color
+rc_blue	include/console.h	/^    rc_blue = 1,$/;"	e	enum:real_color
+rc_brown	include/console.h	/^    rc_brown = 6,$/;"	e	enum:real_color
+rc_cyan	include/console.h	/^    rc_cyan = 3,$/;"	e	enum:real_color
+rc_dark_grey	include/console.h	/^    rc_dark_grey = 8,$/;"	e	enum:real_color
+rc_green	include/console.h	/^    rc_green = 2,$/;"	e	enum:real_color
+rc_light_blue	include/console.h	/^    rc_light_blue = 9,$/;"	e	enum:real_color
+rc_light_brown	include/console.h	/^    rc_light_brown  = 14,   \/\/ yellow$/;"	e	enum:real_color
+rc_light_cyan	include/console.h	/^    rc_light_cyan = 11,$/;"	e	enum:real_color
+rc_light_green	include/console.h	/^    rc_light_green = 10,$/;"	e	enum:real_color
+rc_light_grey	include/console.h	/^    rc_light_grey = 7,$/;"	e	enum:real_color
+rc_light_magenta	include/console.h	/^    rc_light_magenta = 13,$/;"	e	enum:real_color
+rc_light_red	include/console.h	/^    rc_light_red = 12,$/;"	e	enum:real_color
+rc_magenta	include/console.h	/^    rc_magenta = 5,$/;"	e	enum:real_color
+rc_red	include/console.h	/^    rc_red = 4,$/;"	e	enum:real_color
+rc_white	include/console.h	/^    rc_white = 15$/;"	e	enum:real_color
+real_color	include/console.h	/^typedef enum real_color$/;"	g
+real_color_t	include/console.h	/^} real_color_t;$/;"	t	typeref:enum:real_color
+register_interrupt_handler	idt/idt.c	/^void register_interrupt_handler(uint8_t n, interrupt_handler_t h)$/;"	f
+sched_proc_head	kernel/sched/sched.c	/^struct task_struct * sched_proc_head = NULL;$/;"	v	typeref:struct:task_struct
+schedule	kernel/sched/sched.c	/^void schedule()$/;"	f
+screen_scrolling	drivers/console.c	/^void screen_scrolling()$/;"	f
+section	boot/boot.s	/^section .init.data          ; 开启分页前临时的数据段$/;"	l
+section	boot/boot.s	/^section .init.text   ; 代码段从这里开始, 修改 : 开启分页后虚拟地址, kernel.dll重新修改代码段位置$/;"	l
+sel	include/idt.h	/^	uint16_t sel;				\/\/ISR的段选择, 用于调用TSS描述符相关$/;"	m	struct:idt_entry_t
+shndx	include/elf.h	/^	uint32_t shndx;$/;"	m	struct:elf_symbol_t
+shndx	include/multiboot.h	/^	uint32_t shndx;			\/*  *\/$/;"	m	struct:multiboot_t
+show_memory_map	mm/pmm.c	/^void show_memory_map()$/;"	f
+size	include/elf.h	/^	uint32_t size;		$/;"	m	struct:elf_symbol_t
+size	include/elf.h	/^	uint32_t size;		\/* 目标的大小 *\/ $/;"	m	struct:elf_section_header_t
+size	include/multiboot.h	/^	uint32_t size;				\/* 相关结构的大小 *\/$/;"	m	struct:mmap_entry_t
+size	include/multiboot.h	/^	uint32_t size;			\/* ELF数组的大小 *\/ $/;"	m	struct:multiboot_t
+size_t	include/types.h	/^typedef uint32_t size_t;$/;"	t
+sleep_proc_head	kernel/sched/sched.c	/^struct task_struct * sleep_proc_head = NULL;$/;"	v	typeref:struct:task_struct
+spit_hex	kernel/debug/printk.c	/^int spit_hex(int num, char *buf)$/;"	f
+spit_int	kernel/debug/printk.c	/^int spit_int(int num, char *fmt)$/;"	f
+split_chunk	mm/kalloc.c	/^void split_chunk(header_t *chunk, uint32_t len)$/;"	f
+ss	include/idt.h	/^	uint32_t ss;$/;"	m	struct:pt_regs_t
+stack	boot/boot.s	/^stack: times 1024 db 0      ; 这里作为临时内核栈$/;"	l
+stack	include/sched.h	/^	void *stack;					\/\/ 栈地址$/;"	m	struct:task_struct
+start	boot/boot.s	/^start:$/;"	l
+state	include/sched.h	/^	volatile task_state state;		\/\/ 进程(线程)的状态$/;"	m	struct:task_struct
+static_acssert	include/debug.h	23;"	d
+strcat	libs/string.c	/^inline char *strcat(char *dest, const char *str)$/;"	f
+strcmp	libs/string.c	/^inline int strcmp(const char *str1, const char *str2)$/;"	f
+strcpy	libs/string.c	/^inline char *strcpy(char *dest, const char *str)$/;"	f
+strlen	libs/string.c	/^inline size_t strlen(const char *str)$/;"	f
+strncmp	libs/string.c	/^inline int strncmp(const char *str1, const char *str2, size_t n)$/;"	f
+strncpy	libs/string.c	/^inline char *strncpy(char *dest, const char *str, size_t n)$/;"	f
+strtab	include/elf.h	/^	const char *strtab;$/;"	m	struct:elf_t
+strtabsz	include/elf.h	/^	uint32_t strtabsz;$/;"	m	struct:elf_t
+switch_pgd	mm/vmm.c	/^void switch_pgd(uint32_t pd)$/;"	f
+switch_to	kernel/sched/switch_to.s	/^switch_to:$/;"	l
+symtab	include/elf.h	/^	elf_symbol_t *symtab;$/;"	m	struct:elf_t
+symtabsz	include/elf.h	/^	uint32_t symtabsz;$/;"	m	struct:elf_t
+task_state	include/sched.h	/^typedef enum task_state$/;"	g
+task_state	include/sched.h	/^}task_state;$/;"	t	typeref:enum:task_state
+task_struct	include/sched.h	/^struct task_struct$/;"	s
+test_alloc	mm/kalloc.c	/^void test_alloc()$/;"	f
+thread	init/entry.c	/^int thread(void *arg)$/;"	f
+timer_callback	drivers/timer.c	/^void timer_callback(pt_regs_t *regs)$/;"	f
+type	include/elf.h	/^	uint32_t type;		\/* 标识文件类型, 重定位文件, 可执行文件等 *\/ $/;"	m	struct:elf_section_header_t
+type	include/multiboot.h	/^	uint32_t type;$/;"	m	struct:mmap_entry_t
+uint16_t	include/types.h	/^typedef unsigned short uint16_t;$/;"	t
+uint32_t	include/types.h	/^typedef unsigned int uint32_t;$/;"	t
+uint8_t	include/types.h	/^typedef unsigned char uint8_t;$/;"	t
+unmap	mm/vmm.c	/^void unmap(pgd_t *pgd_now, uint32_t va)$/;"	f
+update_cursor	drivers/console.c	/^static void update_cursor()$/;"	f	file:
+user_esp	include/idt.h	/^	uint32_t user_esp;$/;"	m	struct:pt_regs_t
+va_arg	include/vargs.h	26;"	d
+va_end	include/vargs.h	27;"	d
+va_list	include/vargs.h	/^typedef char * va_list;$/;"	t
+va_start	include/vargs.h	25;"	d
+value	include/elf.h	/^	uint32_t value;$/;"	m	struct:elf_symbol_t
+vbe_control_info	include/multiboot.h	/^	uint32_t vbe_control_info;$/;"	m	struct:multiboot_t
+vbe_interface_len	include/multiboot.h	/^	uint32_t vbe_interface_len;$/;"	m	struct:multiboot_t
+vbe_interface_off	include/multiboot.h	/^	uint32_t vbe_interface_off;$/;"	m	struct:multiboot_t
+vbe_interface_seg	include/multiboot.h	/^	uint32_t vbe_interface_seg;$/;"	m	struct:multiboot_t
+vbe_mode	include/multiboot.h	/^	uint32_t vbe_mode;$/;"	m	struct:multiboot_t
+vbe_mode_info	include/multiboot.h	/^	uint32_t vbe_mode_info;$/;"	m	struct:multiboot_t
+video_memory	drivers/console.c	/^static uint16_t *video_memory = (uint16_t *)(0xB8000 + PAGE_OFFSET);$/;"	v	file:
+vprintk	kernel/debug/printk.c	/^int vprintk(char *buf, const char *fmt, va_list varg)$/;"	f
+wait_proc_head	kernel/sched/sched.c	/^struct task_struct * wait_proc_head = NULL;$/;"	v	typeref:struct:task_struct

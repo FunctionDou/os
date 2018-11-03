@@ -1,3 +1,5 @@
+
+
 #!Makefile
 #
 #
@@ -12,9 +14,9 @@ CC = gcc
 LD = ld
 ASM = nasm
 
-C_FLAGS = -c -Wall -m32 -ggdb -gstabs+ -nostdinc -fno-builtin -fno-stack-protector -I include
+C_FLAGS = -c -Wall -m32 -ggdb -gstabs+ -nostdinc -fno-builtin -fno-stack-protector -I include -fno-pie -fno-pic -O0 #-WI -z relro -WI -z now
 LD_FLAGS = -T scripts/kernel.ld -m elf_i386 -nostdlib
-ASM_FLAGS = -f elf -g -F stabs
+ASM_FLAGS = -f elf -g -F stabs # -fno-pie -fno-pic -O0 -WI -z relro -WI -z now
 
 all: $(S_OBJECTS) $(C_OBJECTS) link update_image
 
@@ -27,7 +29,7 @@ all: $(S_OBJECTS) $(C_OBJECTS) link update_image
 	$(ASM) $(ASM_FLAGS) $<
 link:
 	@echo 链接内核代码
-	$(LD) $(LD_FLAGS) $(S_OBJECTS) $(C_OBJECTS) -o hx_kernel
+	$(LD) $(LD_FLAGS) $(S_OBJECTS) $(C_OBJECTS) -o   hx_kernel
 
 .PHONY:clean
 clean:

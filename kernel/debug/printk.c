@@ -47,7 +47,6 @@ int printk_color(real_color_t back, real_color_t fore, const char *fmt, ...)
     renum = vprintk(buf, fmt, varg);
     va_end(varg);
     buf[renum] = '\0';
-    char *p;
     console_write_color(buf, back, fore);
     /*
     int tmp = renum;

@@ -65,6 +65,11 @@ typedef struct mmap_entry_t
 	uint32_t type;
 }__attribute__((packed)) mmap_entry_t;	/* __attribute__ : gcc下使用的特性, 用来告知编译器的 */
 
+// 开启分页后修改的
+// 内核未建立分页机制时的一个临时指向multiboot_t结构的指针
+extern multiboot_t *mboot_ptr_tmp;
+
+// 内核页表建立后的指向multiboot_t的指针
 extern multiboot_t *glb_mboot_ptr;
 
 #endif

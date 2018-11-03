@@ -20,6 +20,7 @@
 /* ELF : 可重定位目标格式 */ 
 #include "types.h"
 #include "multiboot.h"
+#include "vmm.h"	// 分页开启
 
 #define ELF32_ST_TYPE(i) ((i) & 0xF)
 

@@ -7,9 +7,14 @@
 
 #include "console.h"
 #include "io.h"
+#include "vmm.h"
 
+/* 开启分页后重修修改的地方
 // 绑定VGA的入口地址
 static uint16_t *video_memory = (uint16_t *) 0xB8000;
+*/
+static uint16_t *video_memory = (uint16_t *)(0xB8000 + PAGE_OFFSET);
+
 
 /* 光标的位置, 先设置为(0,0)坐标 */
 static uint8_t cursor_x = 0;

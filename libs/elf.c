@@ -19,16 +19,26 @@ elf_t elf_from_multiboot(multiboot_t *mb)
     uint32_t shstrtab = sh[mb->shndx].addr;
     for(i = 0; i < mb->num; i++)
     {
+	/*开启分页后修改 , 访问地址为内核地址, 在3G地址空间以上
 	const char * name = (const char *)(sh[i].name + shstrtab);
+	*/ 
+	const char * name = (const char *)(sh[i].name + shstrtab) + PAGE_OFFSET;
+
 
 	if(strcmp(name, ".strtab") == 0)
 	{
+	    /*开启分页后修改 , 访问地址为内核地址, 在3G地址空间以上
 	    elf.strtab = (const char *)sh[i].addr;
+	    */ 
+	    elf.strtab = (const char *)sh[i].addr + PAGE_OFFSET;
 	    elf.strtabsz = sh[i].size;
 	}
 	if(strcmp(name, ".symtab") == 0)
 	{
+	    /*开启分页后修改 , 访问地址为内核地址, 在3G地址空间以上
 	    elf.symtab = (elf_symbol_t *)sh[i].addr;
+	    */ 
+	    elf.symtab = (elf_symbol_t *)(sh[i].addr + PAGE_OFFSET);
 	    elf.symtabsz = sh[i].size;
 	}
     }

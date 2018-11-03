@@ -9,22 +9,23 @@
 #define INCLUDE_IDT_H_
 #include "types.h"
 
-// 中断描述符表
+// 中断服务程序表
+// 中断服务程序称为 ISR
 //首先我们定义IDT结构体,成员有:中断处理程序的底16位偏移、选择子、属性等、中断处理程序的高16位偏移
 typedef struct idt_entry_t
 {
-	uint16_t base_lo;			//低16位偏移
-	uint16_t sel;				//目标代码段描述符选择子
+	uint16_t base_lo;			//ISR的低16位地址
+	uint16_t sel;				//ISR的段选择, 用于调用TSS描述符相关
 	uint8_t  always0;			//置0位
 	uint8_t  flags;				//有4位的type、1位的S、2位的DPL、1位的P
-	uint16_t base_hi;			//高16位偏移
+	uint16_t base_hi;			//ISR的高16位地址
 }__attribute__((packed)) idt_entry_t;
 
-//声明idtr寄存器的内容
+//声明IDTR寄存器的内容
 typedef struct idt_ptr_t
 {
-	uint16_t limit;				//低16位限长
-	uint32_t base;				//高32位基地址
+	uint16_t limit;				// IDT限长 (16位)
+	uint32_t base;				// IDT基地址, 开始的地址
 }__attribute__((packed)) idt_ptr_t;
 
 //cpu在处理中断的时候需要保护当前任务的信息，需要保存：

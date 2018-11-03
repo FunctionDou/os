@@ -9,13 +9,17 @@
 #include "io.h"
 #include "idt.h"
 #include "debug.h"
+#include "sched.h"
 
 // 中断处理函数
 void timer_callback(pt_regs_t *regs)
 {
+	schedule();
+	/*
 	static uint32_t tick = 0;
 	printk_color(rc_black, rc_blue, "timer %d\n", tick);
 	tick++;
+	*/
 }
 
 void init_timer(uint32_t frequency)

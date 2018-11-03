@@ -19,10 +19,13 @@ inline void memcpy(void *dest, const void *src, size_t n)
 
 inline void memset(void *s, const uint8_t ch, size_t n)
 {
-    uint8_t *dst = (uint8_t *)s;
+    char *dst = (char *)s;
 
     for( ; n != 0; n--)
-	*dst++ = ch;
+    {
+	*(char *)dst = (char)ch;
+	dst = (char *)dst + 1;
+    }
 }
 
 inline void bzero(void *s, size_t n)
