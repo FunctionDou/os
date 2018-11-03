@@ -60,9 +60,6 @@ typedef struct pt_regs_t
 //初始化idt
 void init_idt();
 
-//irq处理函数
-void irq_handler(pt_regs_t *regs);
-
 // 声明加载 IDTR 的函数
 extern void idt_flush(uint32_t);
 
@@ -74,6 +71,11 @@ void register_interrupt_handler(uint8_t n, interrupt_handler_t h);
 
 //调用中断处理函数
 void isr_handler(pt_regs_t *regs);
+
+//irq处理函数
+void irq_handler(pt_regs_t *regs);
+
+void irq21_handler(pt_regs_t *);
 
 void isr0();        // 0 #DE 除 0 异常 
 void isr1();        // 1 #DB 调试异常 
@@ -148,8 +150,6 @@ void irq12();       // 接 PS/2 鼠标，也可设定给其他硬件
 void irq13();       // 协处理器使用
 void irq14();       // IDE0 传输控制使用
 void irq15();       // IDE1 传输控制使用
-
-
 
 #endif
 

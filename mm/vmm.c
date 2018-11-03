@@ -55,7 +55,7 @@ void map(pgd_t *pgd_now, uint32_t va, uint32_t pa, uint32_t flags)
     // pte指向虚拟地址在的页目录项指向的页框地址(以4K对齐)
     pte_t *pte = (pte_t *)(pgd_now[pgd_idx] & PAGE_MASK);
 
-    // 如果页框没有进行分配. 那么执行页分配
+    // 如果页框没有分配地址. 那么执行页分配
     if(!pte)
     {
 	// alloc_page() : 分配一个页地址
@@ -81,12 +81,13 @@ void map(pgd_t *pgd_now, uint32_t va, uint32_t pa, uint32_t flags)
     asm volatile ("invlpg (%0)" : : "a"(va));
 }
 
+// 取消虚拟地址到物理地址的映射
 void unmap(pgd_t *pgd_now, uint32_t va)
 {
     uint32_t pgd_idx = PGD_INDEX(va);
     uint32_t pte_idx = PTE_INDEX(va);
 
-    // pte指向虚拟地址在的页目录项指向的页框地址(以4K对齐)
+    // pte指向物理地址在的页目录项指向的页框地址(以4K对齐)
     pte_t *pte = (pte_t *)(pgd_now[pgd_idx] & PAGE_MASK);
     
     // 本身是空页框就直接返回
@@ -105,6 +106,7 @@ void unmap(pgd_t *pgd_now, uint32_t va)
     asm volatile ("invlpg (%0)" :: "a"(va));
 }
 
+// 获得虚拟地址所在页框的物理地址, 把无力地孩子存放在pa中
 uint32_t get_mapping(pgd_t *pgd_now, uint32_t va, uint32_t *pa)
 {
     uint32_t pgd_idx = PGD_INDEX(va);
@@ -120,13 +122,14 @@ uint32_t get_mapping(pgd_t *pgd_now, uint32_t va, uint32_t *pa)
     pte = (pte_t *)((uint32_t)pte + PAGE_OFFSET);
     if(pte[pte_idx] != 0 && pa)
     {
-	pa = pte[pte_idx] & PAGE_MASK;
+	*pa = pte[pte_idx] & PAGE_MASK;
 	return 1;
     }
 
     return 0;
 }
 
+// 中断14的输出
 void page_fault(pt_regs_t *regs)
 {
     uint32_t cr2;

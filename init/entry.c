@@ -97,10 +97,24 @@ int thread1(void *arg)
       if(flag == 2)
       {
          printk_color(rc_black, rc_green, "C");
-         flag = 0;
+         flag = 3;
          int n = 100000;
          while(n--)
             ;
+      }
+   }
+}
+
+int thread2(void *arg)
+{
+   while(1)
+   {
+      if(flag == 3)
+      {
+         printk_color(rc_black, rc_red, "D");
+         flag = 0;
+         int n = 100000;
+         while(n--);
       }
    }
 }
@@ -136,12 +150,26 @@ void kern_init()
    alloc = alloc_page();
    printk_color(rc_black, rc_blue, "stack %#x\n", alloc);
 
+   int *a = (int *)kmalloc(sizeof(int) * 3);
+   a[0] = 1;
+   a[1] = 2;
+   kfree(a);
+   int *b = (int *)kmalloc(sizeof(int) * 3);
+   b[0] = 1;
+   b[1] = 2;
+   kfree(b);
+
+
    init_alloc();
    // test_alloc();
    init_sched();
+   char s[100];
+   sprintk(s, "sprintf clear %d\n", 1);
+   printk("%s", s);
 
    kernel_thread(thread, NULL);
    kernel_thread(thread1, NULL);
+   kernel_thread(thread2, NULL);
    
    asm volatile ("sti");
    while(1)

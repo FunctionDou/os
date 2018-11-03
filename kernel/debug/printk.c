@@ -23,7 +23,7 @@ int sipt_hex(int num, char *buf);
 
 int printk(const char *fmt, ...)
 {
-    char buf[SIZE];
+    static char buf[SIZE];
     int retnum;
     va_list varg;
 
@@ -39,7 +39,7 @@ int printk(const char *fmt, ...)
 
 int printk_color(real_color_t back, real_color_t fore, const char *fmt, ...)
 {
-    char buf[SIZE];
+    static char buf[SIZE];
     int renum;
     va_list varg;
 
@@ -57,14 +57,28 @@ int printk_color(real_color_t back, real_color_t fore, const char *fmt, ...)
     return renum;
 }
 
+int sprintk(char *s, const char *fmt, ...)
+{
+    static char buf[SIZE];
+    int retnum;
+    va_list varg;
+
+    va_start(varg, fmt);
+    retnum = vprintk(s, fmt, varg);
+    s[retnum + 1] = '\0';
+    va_end(varg);
+    
+    return retnum;
+}
+
 // printf %c %d %s %- %+ %m
 int vprintk(char *buf, const char *fmt, va_list varg)
 {
     char ch;	/* 保存 char 类型的参数 */ 
     int len;	/* 保存函数的返回值 */
     int flags = 0;
-    int num;	/* 保存int参数 */
-    int m;	/* m 用来保存 %m 中m的值 */
+    int num = 0;	/* 保存int参数 */
+    int m = 0;	/* m 用来保存 %m 中m的值 */
     int i;
 
 

@@ -170,7 +170,6 @@ blank	drivers/console.c	/^uint16_t blank = 0x20 | ((0 << 4 | (15 & 0x0F)) << 8);
 boot_device	include/multiboot.h	/^	uint32_t boot_device;	\/* flags[1]保存BIOS启动时从哪个OS镜像引导 *\/ $/;"	m	struct:multiboot_t
 boot_loader_name	include/multiboot.h	/^	uint32_t boot_loader_name;$/;"	m	struct:multiboot_t
 bzero	libs/string.c	/^inline void bzero(void *s, size_t n)$/;"	f
-change_task_to	kernel/sched/sched.c	/^void change_task_to(struct task_struct *next)$/;"	f
 cmdline	include/multiboot.h	/^	uint32_t cmdline;		\/* 内核命令行 *\/ $/;"	m	struct:multiboot_t
 config_table	include/multiboot.h	/^	uint32_t config_table;	\/* ROM配置表 *\/$/;"	m	struct:multiboot_t
 console_clear	drivers/console.c	/^void console_clear()$/;"	f
@@ -306,7 +305,7 @@ name	include/elf.h	/^	uint32_t name;		\/* 字符串表中的字节偏移 *\/ $/;
 name	include/elf.h	/^	uint32_t name;	$/;"	m	struct:elf_symbol_t
 next	include/kalloc.h	/^	struct header *next;$/;"	m	struct:header	typeref:struct:header::header
 next	include/sched.h	/^	struct task__struct *next;		\/\/ 进程链表$/;"	m	struct:task_struct	typeref:struct:task_struct::task__struct
-now_pid	kernel/sched/sched.c	/^pid_t now_pid = 0;$/;"	v
+now_pid	kernel/sched/kern_pthread.c	/^pid_t now_pid = 0;$/;"	v
 num	include/multiboot.h	/^	uint32_t num;			\/*  *\/ $/;"	m	struct:multiboot_t
 number_sign	kernel/debug/printk.c	/^int number_sign(char *buf, const char ch)$/;"	f
 offset	include/elf.h	/^	uint32_t offset;	\/* 文件开头到段开头的第一个字节的偏移 *\/$/;"	m	struct:elf_section_header_t
@@ -320,7 +319,7 @@ pgd_t	include/vmm.h	/^typedef uint32_t pgd_t;							\/\/ 页目录数据类型$/
 pgd_tmp	init/entry.c	/^__attribute__((section(".init.data"))) pgd_t *pgd_tmp = (pgd_t *)0x1000;$/;"	v
 phy_page_count	mm/pmm.c	/^uint32_t phy_page_count = 0;$/;"	v
 pid	include/sched.h	/^	pid_t pid;						\/\/ PID$/;"	m	struct:task_struct
-pid_t	include/sched.h	15;"	d
+pid_t	include/types.h	/^typedef unsigned int pid_t;$/;"	t
 pmm_stack	mm/pmm.c	/^static uint32_t pmm_stack[PAGE_MAX_SIZE + 1];$/;"	v	file:
 pmm_stack_top	mm/pmm.c	/^static uint32_t pmm_stack_top = 0;$/;"	v	file:
 prev	include/kalloc.h	/^	struct header *prev;	\/\/ 前后内存块管理结构指针$/;"	m	struct:header	typeref:struct:header::header
@@ -394,6 +393,7 @@ task_state	include/sched.h	/^}task_state;$/;"	t	typeref:enum:task_state
 task_struct	include/sched.h	/^struct task_struct$/;"	s
 test_alloc	mm/kalloc.c	/^void test_alloc()$/;"	f
 thread	init/entry.c	/^int thread(void *arg)$/;"	f
+thread1	init/entry.c	/^int thread1(void *arg)$/;"	f
 timer_callback	drivers/timer.c	/^void timer_callback(pt_regs_t *regs)$/;"	f
 type	include/elf.h	/^	uint32_t type;		\/* 标识文件类型, 重定位文件, 可执行文件等 *\/ $/;"	m	struct:elf_section_header_t
 type	include/multiboot.h	/^	uint32_t type;$/;"	m	struct:mmap_entry_t
