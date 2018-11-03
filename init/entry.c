@@ -164,7 +164,7 @@ void kern_init()
    // test_alloc();
    init_sched();
    char s[100];
-   sprintk(s, "sprintf clear %d\n", 1);
+   snprintk(s, sizeof(s), "sprintf clear %d\n", 1);
    printk("%s", s);
 
    kernel_thread(thread, NULL);

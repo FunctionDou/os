@@ -59,7 +59,6 @@ int printk_color(real_color_t back, real_color_t fore, const char *fmt, ...)
 
 int sprintk(char *s, const char *fmt, ...)
 {
-    static char buf[SIZE];
     int retnum;
     va_list varg;
 
@@ -68,6 +67,22 @@ int sprintk(char *s, const char *fmt, ...)
     s[retnum + 1] = '\0';
     va_end(varg);
     
+    return retnum;
+}
+
+int snprintk(char *s, uint32_t n, const char *fmt, ...)
+{
+    static char buf[SIZE];
+    int retnum;
+    va_list varg;
+
+    va_start(varg, fmt);
+    retnum = vprintk(buf, fmt, varg);
+    strncpy(s, buf, n);
+    retnum = (retnum > n ? n : retnum);
+    s[retnum] = '\0';
+
+    va_end(varg);
     return retnum;
 }
 

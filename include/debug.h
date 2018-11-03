@@ -42,4 +42,6 @@ int vprintk(char *buf, const char *fmt, va_list varg);
 
 int sprintk(char *, const char *, ...);
 
+int snprintk(char *, uint32_t , const char *, ...);
+
 #endif
