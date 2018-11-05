@@ -84,6 +84,42 @@ void screen_scrolling()
 /* 输出有颜色的一个字符 */ 
 void console_putc_color(const char c, real_color_t back, real_color_t fore)
 {
+Print:
+    if(c == '\n' || c == '\r' || cursor_x >= WIDTH)
+    {
+	cursor_x = 0;
+	cursor_y++;
+	screen_scrolling();
+    }
+    else if(c == TAB)
+    {
+	//if((cursor_x + 8) & ~(8 - 1) < WIDTH)
+	    cursor_x = (cursor_x + 4) & ~(4 - 1);
+    }
+    else if(c == BLACK)
+    {
+	if(cursor_x)
+	    cursor_x--;
+	else
+	{
+	    cursor_x = WIDTH - 1;
+	    cursor_y--;
+	}
+    }
+    else 
+    {
+	video_memory[cursor_x + cursor_y * WIDTH] = (((fore & 0x0F) << 8) | back  << 4 | c);
+	cursor_x++;
+    }
+
+    update_cursor();
+    if(cursor_x >= WIDTH)
+	goto Print;
+}
+
+/*
+void console_putc_color(const char c, real_color_t back, real_color_t fore)
+{
     uint8_t back_color = (uint8_t)back;
     uint8_t fore_color = (uint8_t)fore;
     uint16_t color = (back_color << 4 | (fore_color & 0x0F)) << 8;
@@ -114,6 +150,7 @@ void console_putc_color(const char c, real_color_t back, real_color_t fore)
     screen_scrolling();
     update_cursor();
 }
+*/ 
 
 /* 输出一个默认颜色的字符 */ 
 void console_write(const char *cstr)
